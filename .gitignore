@@ -25,6 +25,9 @@ result-*
 .direnv
 nohup.out
 
+# Haskell
+dist-newstyle/
+
 # secrets retarded files
 secrets/*.retard
 secrets/*.ovpn

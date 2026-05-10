@@ -33,14 +33,14 @@ common shared
   build-depends:
       aeson
     , async
-    , base >=4 && <5
+    , base 
     , data-default
     , directory
     , filepath
     , mtl
     , optics-core
     , profunctors
-    , relude >=1.0
+    , relude 
     , shower
     , time
     , with-utf8
