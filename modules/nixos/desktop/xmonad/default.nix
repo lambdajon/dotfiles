@@ -2,11 +2,7 @@
 {
   services.xserver = {
     enable = true;
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      config = ./src/xmonad.hs;
-    };
+    windowManager.xmonad.enable = true;
   };
 
   services.displayManager.sddm.enable = true;
