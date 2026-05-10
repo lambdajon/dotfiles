@@ -1,0 +1,70 @@
+cabal-version: 3.0
+name: xmonad-config
+version: 0.1.0.0
+license: MIT
+author: Jasmine Marie Wilson
+maintainer: its.jassy@pm.me
+category: System
+synopsis: My personal xmonad + xmobar configuration
+
+common shared
+  ghc-options:
+    -Wall -Wincomplete-record-updates -Wincomplete-uni-patterns
+    -Wmissing-deriving-strategies -Wunused-foralls -Wunused-foralls
+    -fprint-explicit-foralls -fprint-explicit-kinds
+
+  mixins:
+    base hiding (Prelude),
+    relude (Relude as Prelude, Relude.Container.One),
+    relude
+
+  default-extensions:
+    DataKinds
+    DerivingStrategies
+    DerivingVia
+    LambdaCase
+    MultiWayIf
+    NoStarIsType
+    OverloadedStrings
+    StrictData
+    TypeFamilies
+    ViewPatterns
+
+  build-depends:
+      aeson
+    , async
+    , base >=4 && <5
+    , data-default
+    , directory
+    , filepath
+    , mtl
+    , optics-core
+    , profunctors
+    , relude >=1.0
+    , shower
+    , time
+    , with-utf8
+
+  hs-source-dirs: src
+  default-language: GHC2021
+
+executable xmobar
+  import: shared
+  ghc-options: -threaded
+  build-depends:
+      xmobar
+    , xmonad-contrib
+
+  other-modules: XMonadConfig.GruvboxMaterial
+  main-is: xmobar.hs
+
+executable xmonad
+  import: shared
+  build-depends:
+      containers
+    , X11
+    , xmonad
+    , xmonad-contrib
+
+  other-modules: XMonadConfig.GruvboxMaterial
+  main-is: xmonad.hs
