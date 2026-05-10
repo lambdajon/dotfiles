@@ -77,8 +77,10 @@ in
       xdg.enable = true;
       xsession.windowManager.xmonad = {
         enable = true;
-        enableContribAndExtras = true;
-        config = ../../modules/nixos/desktop/xmonad/src/xmonad.hs;
+        config = pkgs.writeText "xmonad.hs" ''
+          import XMonad
+          main = xmonad def
+        '';
       };
       programs.home-manager.enable = true;
     };
