@@ -75,13 +75,7 @@ in
         stateVersion = "25.11";
       };
       xdg.enable = true;
-      xsession.windowManager.xmonad = {
-        enable = true;
-        config = pkgs.writeText "xmonad.hs" ''
-          import XMonad
-          main = xmonad def
-        '';
-      };
+      # xdg.configFile."xmonad/xmonad.hs".source = ../../modules/nixos/desktop/xmonad/src/xmonad.hs;
       programs.home-manager.enable = true;
     };
 

@@ -30,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
         extraSpecialArgs = { inherit inputs pkgs-unstable; };
         sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
         backupFileExtension = "baka";
+        home-manager.overwriteBackup = true;
       };
     }
   ]
