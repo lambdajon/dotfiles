@@ -75,6 +75,11 @@ in
         stateVersion = "25.11";
       };
       xdg.enable = true;
+      xsession.windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        config = ../../modules/nixos/desktop/xmonad/src/xmonad.hs;
+      };
       programs.home-manager.enable = true;
     };
 
