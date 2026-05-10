@@ -42,7 +42,6 @@ in
 
   rust = {
     core = with pkgs; [
-      rustup
       rust-analyzer
       cargo-watch
       cargo-edit
@@ -55,7 +54,7 @@ in
       serayuzgur.crates
     ];
     vscode.userSettings = { };
-    neovim.packages = [ pkgs.rust-analyzer ];
+    neovim.packages = [  ];
   };
 
   js = {
