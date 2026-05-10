@@ -16,3 +16,6 @@ eval: eval-victus
 
 xmonad-regen:
   nix run nixpkgs#cabal2nix -- modules/nixos/desktop/xmonad > modules/nixos/desktop/xmonad/xmonad-config.nix
+
+switch-victus:
+  sudo nixos-rebuild switch --flake .#victus
