@@ -1,25 +1,19 @@
 import Data.List as L
+import qualified XMonad.StackSet as W
 import XMonad
 import XMonad.Actions.CycleWS
-import XMonad.Actions.CycleWindows
-import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers (doRectFloat, isDialog)
+import XMonad.Hooks.ManageHelpers (isDialog)
 import XMonad.Hooks.Modal
-import XMonad.Hooks.StatusBar
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
-import XMonad.StackSet qualified as W
 import XMonad.Util.EZConfig
-import XMonad.Util.Font
-import XMonad.Util.Loggers
 
 import Graphics.X11.ExtraTypes.XF86
 
-import XMonadConfig.GruvboxMaterial
 
 {- FOURMOLU_DISABLE -}
 
@@ -32,7 +26,6 @@ main = xmonad
  . docks
  . ewmhFullscreen
  . ewmh
- . withSB myXmobar
  . modal [termMode, layoutMode, spawnMode]
  $ myConfig
 
@@ -178,28 +171,6 @@ myLayouts = myTile ||| myMax ||| myFull
  nmaster = 1
  ratio   = 2/3
  delta   = 3/100
-
---
--- Statusbar
---
-
-myXmobar = statusBarPropTo "_XMONAD_LOG_1" "xmobar" (pure myXmobarPP)
-
-myXmobarPP :: PP
-myXmobarPP = def
- { ppSep             = grey0 " "
- , ppCurrent         = blue . wrap " " ""
- , ppTitle           = grey2 . wrap (grey0 " <fn=1>[</fn> ") (grey0 " <fn=1>]</fn>") . shorten 32
- , ppVisible         = grey0 . wrap " " ""
- , ppHidden          = grey0 . wrap " " ""
- , ppHiddenNoWindows = grey0 . wrap " " ""
- , ppUrgent          = red . wrap " " ""
- , ppLayout          = aqua . wrap (grey0 " <fn=1>[</fn> ") (grey0 " <fn=1>]</fn> ")
- , ppOrder           = \case { [ws, l, title, mode] -> [ws, l, mode, title]; xs -> xs }
- , ppExtras          = [lMode]
- }
- where
- lMode = xmobarColorL "#d8a657" "#282828" . fixedWidthL AlignCenter "-" 6 $ logMode
 
 --
 -- StartupHook
