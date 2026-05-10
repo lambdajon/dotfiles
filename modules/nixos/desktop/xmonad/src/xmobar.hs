@@ -5,10 +5,10 @@ import XMonadConfig.GruvboxMaterial
 config :: Config
 config =
   defaultConfig
-    { font = "JetBrainsMono Nerd Font 10"
+    { font = "xft:JetBrainsMono Nerd Font:size=10"
     , additionalFonts =
-        [ "JetBrainsMono Nerd Font Bold 10"
-        , "Symbols Nerd Font 2048-em 24"
+        [ "xft:JetBrainsMono Nerd Font:weight=bold:size=10"
+        , "xft:Symbols Nerd Font Mono:size=14"
         ]
     , bgColor = background
     , fgColor = foreground
@@ -74,24 +74,24 @@ config =
             ]
             (30 `seconds`)
       ]
-    where
-      ppDiskSpace :: String
-      ppDiskSpace = orange "<used>" ++ grey0 "/" ++ aqua "<free>"
+      where
+        ppDiskSpace :: String
+        ppDiskSpace = orange "<used>" ++ grey0 "/" ++ aqua "<free>"
 
-      seconds :: Int -> Int
-      seconds = (* 10)
+        seconds :: Int -> Int
+        seconds = (* 10)
 
-      minutes :: Int -> Int
-      minutes = (60 *) . seconds
+        minutes :: Int -> Int
+        minutes = (60 *) . seconds
 
-      ppTitle :: String -> String
-      ppTitle = wrap "" ": " . grey2
+        ppTitle :: String -> String
+        ppTitle = wrap "" ": " . grey2
 
-      inWrapper :: String -> String
-      inWrapper = wrap (grey0 " <fn=1>[</fn> ") (grey0 " <fn=1>]</fn> ")
+        inWrapper :: String -> String
+        inWrapper = wrap (grey0 " <fn=1>[</fn> ") (grey0 " <fn=1>]</fn> ")
 
-      inWrapper' :: String -> String
-      inWrapper' = wrap (grey0 "<fn=1>[</fn> ") (grey0 " <fn=1>]</fn> ")
+        inWrapper' :: String -> String
+        inWrapper' = wrap (grey0 "<fn=1>[</fn> ") (grey0 " <fn=1>]</fn> ")
 
 main :: IO ()
 main = configFromArgs config >>= xmobar

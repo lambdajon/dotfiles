@@ -5,7 +5,7 @@ import XMonad.Actions.CycleWindows
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers (doRectFloat)
+import XMonad.Hooks.ManageHelpers (doRectFloat, isDialog)
 import XMonad.Hooks.Modal
 import XMonad.Hooks.StatusBar
 import XMonad.Layout.NoBorders

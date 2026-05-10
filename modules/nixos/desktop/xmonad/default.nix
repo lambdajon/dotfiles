@@ -8,6 +8,7 @@ in
     windowManager.session = lib.singleton {
       name = "xmonad";
       start = ''
+        export PATH="${xmonadPkg}/bin:$PATH"
         ${xmonadPkg}/bin/xmonad &
         waitPID=$!
       '';
