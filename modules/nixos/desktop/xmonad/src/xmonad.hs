@@ -16,7 +16,6 @@ import XMonad.StackSet qualified as W
 import XMonad.Util.EZConfig
 import XMonad.Util.Font
 import XMonad.Util.Loggers
-import XMonad.Util.SpawnOnce
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -207,7 +206,7 @@ myXmobarPP = def
 --
 
 myStartupHook :: X ()
-myStartupHook = spawnOnce "feh --bg-scale ~/.wallpaper"
+myStartupHook = return ()
 
 --
 -- ManageHook
