@@ -8,28 +8,31 @@
     package = pkgs.vscode;
     mutableExtensionsDir = false;
 
-    extensions = with pkgs.vscode-extensions; [
-      # vscodevim.vim
-      jnoortheen.nix-ide
-      eamodio.gitlens
-      pkief.material-icon-theme
-      mechatroner.rainbow-csv
+    extensions =
+      with pkgs.vscode-extensions;
+      [
+        # vscodevim.vim
+        jnoortheen.nix-ide
+        eamodio.gitlens
+        pkief.material-icon-theme
+        mechatroner.rainbow-csv
 
-      pkief.material-product-icons
-      donjayamanne.githistory
-      jdinhlife.gruvbox
+        pkief.material-product-icons
+        donjayamanne.githistory
+        jdinhlife.gruvbox
 
-      # mads-hartmann.bash-ide-vscode
-      tamasfe.even-better-toml
+        # mads-hartmann.bash-ide-vscode
+        tamasfe.even-better-toml
 
-    ]++ pkgs.vscode-utils. extensionsFromVscodeMarketplace [
-         {
-                name = "language-x86-64-assembly";
-                publisher = "13xforever";
-                version = "3.1.5";
-                sha256 = "sha256-WIhmAZLR2WOSqQF3ozJ/Vr3Rp6HdSK7L23T3h4AVaGM=";
-              }
-    ];
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "language-x86-64-assembly";
+          publisher = "13xforever";
+          version = "3.1.5";
+          sha256 = "sha256-WIhmAZLR2WOSqQF3ozJ/Vr3Rp6HdSK7L23T3h4AVaGM=";
+        }
+      ];
 
     userSettings = {
       editor = {
