@@ -28,7 +28,6 @@ inputs.nixpkgs.lib.nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = { inherit inputs pkgs-unstable; };
-        sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
         backupFileExtension = "baka";
       };
     }
