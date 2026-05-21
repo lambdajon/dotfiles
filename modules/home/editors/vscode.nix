@@ -15,7 +15,6 @@
       pkief.material-icon-theme
       mechatroner.rainbow-csv
 
-      pkief.material-icon-theme
       pkief.material-product-icons
       donjayamanne.githistory
       jdinhlife.gruvbox
