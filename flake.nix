@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     # Secrets management
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -36,6 +41,13 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     relago.url = "git+https://git.oss.uzinfocom.uz/xinux/relago";
+
+    # Zen browser
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
