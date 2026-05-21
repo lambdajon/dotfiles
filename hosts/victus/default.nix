@@ -4,6 +4,7 @@
   lib,
   personal,
   inputs,
+  config,
   ...
 }:
 
@@ -22,6 +23,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    # ./disk.nix
 
     ../../modules/nixos/boot
     ../../modules/nixos/core/nix.nix
@@ -34,12 +36,59 @@ in
     })
 
     ../../modules/nixos/desktop/common.nix
-    ../../modules/nixos/desktop/xmonad
+    ../../modules/nixos/desktop/hyprland.nix
 
     ../../modules/nixos/services/bluetooth.nix
+    ../../modules/nixos/services/docker.nix
 
-    # inputs.relago.nixosModules.default
+    inputs.relago.nixosModules.default
   ];
+
+  # NVIDIA
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    open = true;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    powerManagement.enable = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      mesa
+      libvdpau
+      libva-vdpau-driver
+      libva
+      vulkan-loader
+      vulkan-validation-layers
+    ];
+  };
+
+  services.power-profiles-daemon.enable = false;
+  powerManagement.powertop.enable = false;
+
+  services.mullvad-vpn.enable = true;
+
+  # Printing
+  services.printing.enable = true;
+
+  # DBus broker
+  services.dbus.implementation = "broker";
+
+  # Crash dump
+  boot.crashDump.enable = true;
+
+  # Relago service
+  services.relago = {
+    enable = true;
+    nix-config = "/home/${personal.username}/dotfiles";
+  };
+
+  # Override module defaults
+  security.sudo.wheelNeedsPassword = lib.mkForce false;
 
   home-manager.users.${personal.username} =
     { ... }:

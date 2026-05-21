@@ -3,11 +3,14 @@
   lib,
   pkgs,
   modulesPath,
+  inputs,
   ...
 }:
 {
   imports = [
+    inputs.disko.nixosModules.disko
     (modulesPath + "/installer/scan/not-detected.nix")
+    ./disk.nix
   ];
 
   boot.initrd.availableKernelModules = [
@@ -30,20 +33,6 @@
   # ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2db969c3-178a-402e-876a-f04c31ca7d08";
-      fsType = "ext4";
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A0E5-ABEB";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/0eb2581f-a949-40a9-8d75-85f63583c1fb"; }
-    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
