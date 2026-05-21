@@ -22,6 +22,13 @@
       # mads-hartmann.bash-ide-vscode
       tamasfe.even-better-toml
 
+    ]++ pkgs.vscode-utils. extensionsFromVscodeMarketplace [
+         {
+                name = "language-x86-64-assembly";
+                publisher = "13xforever";
+                version = "3.1.5";
+                sha256 = "sha256-WIhmAZLR2WOSqQF3ozJ/Vr3Rp6HdSK7L23T3h4AVaGM=";
+              }
     ];
 
     userSettings = {
