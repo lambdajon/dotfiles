@@ -98,6 +98,7 @@ in
         ../../modules/home/shell/starship.nix
         (import ../../modules/home/editors/neovim.nix { defaultEditor = true; })
         ../../modules/home/editors/vscode.nix
+        ../../modules/home/tools/direnv.nix
         ../../modules/home/tools/misc.nix
         ../../modules/home/tools/fastfetch.nix
         (import ../../modules/home/tools/git.nix {
