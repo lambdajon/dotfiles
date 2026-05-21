@@ -54,7 +54,7 @@ in
       serayuzgur.crates
     ];
     vscode.userSettings = { };
-    neovim.packages = [  ];
+    neovim.packages = [ ];
   };
 
   js = {
