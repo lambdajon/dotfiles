@@ -94,6 +94,9 @@ in
     { ... }:
     {
       imports = [
+        inputs.sops-nix.homeManagerModules.sops
+        inputs.zen-browser.homeModules.default
+        ../../modules/home/browsers/firefox.nix
         ../../modules/home/shell/zsh.nix
         ../../modules/home/shell/starship.nix
         (import ../../modules/home/editors/neovim.nix { defaultEditor = true; })
