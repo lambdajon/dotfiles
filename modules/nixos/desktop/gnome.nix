@@ -1,6 +1,11 @@
 { pkgs, ... }:
 {
   services = {
+    displayManager.gdm = {
+      enable = true;
+      autoSuspend = false;
+    };
+
     xserver = {
       enable = true;
 
@@ -10,11 +15,6 @@
       };
 
       excludePackages = [ pkgs.xterm ];
-
-      displayManager.gdm = {
-        enable = true;
-        autoSuspend = false;
-      };
 
       desktopManager.gnome = {
         enable = true;
