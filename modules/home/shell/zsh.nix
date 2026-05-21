@@ -39,7 +39,10 @@
   };
 
   programs.fzf.enable = true;
-  programs.zoxide.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   home.packages = with pkgs; [
     eza
