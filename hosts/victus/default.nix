@@ -36,7 +36,7 @@ in
     })
 
     ../../modules/nixos/desktop/common.nix
-    ../../modules/nixos/desktop/hyprland.nix
+    ../../modules/nixos/desktop/gnome.nix
 
     ../../modules/nixos/services/bluetooth.nix
     ../../modules/nixos/services/docker.nix
