@@ -6,5 +6,7 @@
     usbutils
     lsof
     xdg-utils
+    flameshot
+    docker-compose
   ];
 }
