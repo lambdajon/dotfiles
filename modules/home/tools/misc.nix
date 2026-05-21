@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    aria2
     wget
     curl
     unzip
@@ -15,5 +16,10 @@
     deadnix
     statix
     nixpkgs-fmt
+    nmap
+    graphviz
+    ffmpeg-full
+    sqlite
+    gnupg
   ];
 }
