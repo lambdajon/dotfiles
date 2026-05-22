@@ -5,6 +5,7 @@
   ...
 }:
 {
+  disko.devices = {
     disk = {
       main = {
         device = builtins.elemAt disks 0;
@@ -23,7 +24,7 @@
               };
             };
             SWAP = {
-              size = "36G";
+              size = "12G";
               content = {
                 type = "swap";
               };
@@ -34,6 +35,23 @@
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
+              };
+            };
+          };
+        };
+      };
+      sda = {
+        device =  builtins.elemAt disks 1;
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            MEDIA = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/media";
               };
             };
           };
