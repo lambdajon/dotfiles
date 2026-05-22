@@ -4,7 +4,8 @@
     "/dev/sda"
   ],
   ...
-}:{
+}:
+{
   disko.devices = {
     disk = {
       nvme0n1 = {
@@ -43,7 +44,7 @@
         };
       };
       sda = {
-        device =  builtins.elemAt disks 0;
+        device = builtins.elemAt disks 0;
         type = "disk";
         content = {
           type = "gpt";
