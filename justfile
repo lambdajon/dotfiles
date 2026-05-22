@@ -9,6 +9,10 @@ format:
 eval-victus:
   nix eval .#nixosConfigurations.victus.config.system.build.toplevel.drvPath --show-trace
 
+eval-tower:
+  nix eval .#nixosConfigurations.tower.config.system.build.toplevel.drvPath --show-trace
+
+
 check:
   nix flake check
 
