@@ -1,8 +1,14 @@
 {
+  disks ? [
+    "/dev/nvme0n1"
+    "/dev/sda"
+  ],
+  ...
+}:{
   disko.devices = {
     disk = {
       nvme0n1 = {
-        device = "/dev/nvme0n1";
+        device = builtins.elemAt disks 0;
         type = "disk";
         content = {
           type = "gpt";
@@ -37,7 +43,7 @@
         };
       };
       sda = {
-        device = "/dev/sda";
+        device =  builtins.elemAt disks 0;
         type = "disk";
         content = {
           type = "gpt";
