@@ -1,6 +1,7 @@
 {
   disks ? [
-    "/dev/nvme0n1"
+   "/dev/nvme0n1"
+   "/dev/sda"
   ],
   ...
 }:
@@ -24,7 +25,7 @@
               };
             };
             SWAP = {
-              size = "12G";
+              size = "36G";
               content = {
                 type = "swap";
               };
@@ -40,23 +41,23 @@
           };
         };
       };
-      # sda = {
-      #   device =  builtins.elemAt disks 1;
-      #   type = "disk";
-      #   content = {
-      #     type = "gpt";
-      #     partitions = {
-      #       MEDIA = {
-      #         size = "100%";
-      #         content = {
-      #           type = "filesystem";
-      #           format = "ext4";
-      #           mountpoint = "/media";
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
+      sda = {
+        device =  builtins.elemAt disks 1;
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            MEDIA = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/media";
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
