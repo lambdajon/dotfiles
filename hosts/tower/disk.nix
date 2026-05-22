@@ -1,20 +1,19 @@
 {
   disks ? [
     "/dev/nvme0n1"
-    "/dev/sda"
   ],
   ...
-}:{
-  disko.devices = {
+}:
+{
     disk = {
-      nvme0n1 = {
+      main = {
         device = builtins.elemAt disks 0;
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             BOOT = {
-              size = "2G";
+              size = "1000M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -27,8 +26,6 @@
               size = "36G";
               content = {
                 type = "swap";
-                discardPolicy = "both";
-                resumeDevice = true;
               };
             };
             ROOT = {
@@ -42,41 +39,6 @@
           };
         };
       };
-      sda = {
-        device =  builtins.elemAt disks 0;
-        type = "disk";
-        content = {
-          type = "gpt";
-          partitions = {
-            MEDIA = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/media";
-              };
-            };
-          };
-        };
-      };
-      # sdb = {
-      #   device = "/dev/sdb";
-      #   type = "disk";
-      #   content = {
-      #     type = "gpt";
-      #     partitions = {
-      #       SERVER = {
-      #         size = "100%";
-      #         content = {
-      #           type = "filesystem";
-      #           format = "ext4";
-      #           mountpoint = "/srv";
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
-
     };
   };
 }
