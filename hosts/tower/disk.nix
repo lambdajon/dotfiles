@@ -53,23 +53,23 @@
           };
         };
       };
-      sdb = {
-        device = "/dev/sdb";
-        type = "disk";
-        content = {
-          type = "gpt";
-          partitions = {
-            SERVER = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/srv";
-              };
-            };
-          };
-        };
-      };
+      # sdb = {
+      #   device = "/dev/sdb";
+      #   type = "disk";
+      #   content = {
+      #     type = "gpt";
+      #     partitions = {
+      #       SERVER = {
+      #         size = "100%";
+      #         content = {
+      #           type = "filesystem";
+      #           format = "ext4";
+      #           mountpoint = "/srv";
+      #         };
+      #       };
+      #     };
+      #   };
+      # };
 
     };
   };
