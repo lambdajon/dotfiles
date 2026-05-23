@@ -1,7 +1,7 @@
 {
   disks ? [
-   "/dev/nvme0n1"
-   "/dev/sda"
+    "/dev/nvme0n1"
+    "/dev/sda"
   ],
   ...
 }:
@@ -42,7 +42,7 @@
         };
       };
       sda = {
-        device =  builtins.elemAt disks 1;
+        device = builtins.elemAt disks 1;
         type = "disk";
         content = {
           type = "gpt";
