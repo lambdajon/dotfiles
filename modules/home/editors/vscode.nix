@@ -26,6 +26,7 @@
 
         eamodio.gitlens
         usernamehw.errorlens
+        oderwat.indent-rainbow
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
