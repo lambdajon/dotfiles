@@ -51,7 +51,7 @@ in
 
     vscode.extensions = with pkgs.vscode-extensions; [
       rust-lang.rust-analyzer
-      serayuzgur.crates
+      # serayuzgur.crates
     ];
     vscode.userSettings = { };
     neovim.packages = [ ];
