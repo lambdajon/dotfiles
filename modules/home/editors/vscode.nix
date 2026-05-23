@@ -42,6 +42,7 @@
         # fontSize = 14;
         # lineNumbers  = "relative";
       };
+      files.autoSave = "afterDelay";
       workbench = {
         colorTheme = "Gruvbox Dark Medium";
         iconTheme = "material-icon-theme";
