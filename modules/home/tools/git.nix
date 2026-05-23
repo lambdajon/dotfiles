@@ -37,11 +37,16 @@
       push-new = "!git push --set-upstream origin $(git branch --show-current)";
     };
 
+    ignores = [
+      ".idea"
+      ".DS_Store"
+      "nohup.out"
+    ];
     extraConfig = {
       init.defaultBranch = "main";
-      pull.rebase = true;
-      rebase.autoStash = true;
-      merge.conflictstyle = "diff3";
+      pull.rebase = false;
+      # rebase.autoStash = true;
+      # merge.conflictstyle = "diff3";
     }
     // extraConfig;
   };

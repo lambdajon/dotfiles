@@ -24,6 +24,9 @@
         # mads-hartmann.bash-ide-vscode
         tamasfe.even-better-toml
 
+        eamodio.gitlens
+        usernamehw.errorlens
+        oderwat.indent-rainbow
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -42,6 +45,7 @@
         # fontSize = 14;
         # lineNumbers  = "relative";
       };
+      files.autoSave = "afterDelay";
       workbench = {
         colorTheme = "Gruvbox Dark Medium";
         iconTheme = "material-icon-theme";
@@ -55,6 +59,13 @@
       "inlineChat.accessibleDiffView" = "off";
       "extensions.autoCheckUpdates" = false;
       "window.nativeTabs" = true;
+
+      "[json]" = {
+        "editor.defaultFormatter" = "vscode.json-language-features";
+      };
+      "[jsonc]" = {
+        "editor.defaultFormatter" = "vscode.json-language-features";
+      };
     };
   };
 }
