@@ -24,6 +24,8 @@
         # mads-hartmann.bash-ide-vscode
         tamasfe.even-better-toml
 
+        eamodio.gitlens
+        usernamehw.errorlens
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
