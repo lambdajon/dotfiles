@@ -59,6 +59,13 @@
       "inlineChat.accessibleDiffView" = "off";
       "extensions.autoCheckUpdates" = false;
       "window.nativeTabs" = true;
+
+      "[json]" = {
+        "editor.defaultFormatter" = "vscode.json-language-features";
+      };
+      "[jsonc]" = {
+        "editor.defaultFormatter" = "vscode.json-language-features";
+      };
     };
   };
 }
