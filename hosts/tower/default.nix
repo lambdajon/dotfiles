@@ -42,6 +42,7 @@ in
     ../../modules/nixos/services/docker.nix
 
     inputs.relago.nixosModules.default
+    inputs.nix-data.nixosModules.nix-data
   ];
 
   # NVIDIA
@@ -53,6 +54,13 @@ in
     nvidiaSettings = true;
     powerManagement.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  programs.nix-data = {
+    enable = true;
+    systemconfig = "/home/lambdajon/dotfiles/hosts/tower/default.nix";
+    flake = "/home/lambdajon/dotfiles/flake.nix";
+    flakearg = "tower";
   };
 
   hardware.graphics = {

@@ -48,6 +48,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       # home-manager.follows = "home-manager";
     };
+
+    nix-data = {
+      url = "github:xinux-org/nix-data";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
