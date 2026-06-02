@@ -42,6 +42,8 @@ in
     ../../modules/nixos/services/docker.nix
 
     inputs.relago.nixosModules.default
+    inputs.nix-data.nixosModules.nix-data
+
   ];
 
   # NVIDIA
@@ -67,6 +69,12 @@ in
     ];
   };
 
+  programs.nix-data = {
+    enable = true;
+    systemconfig = "/home/lambdajon/dotfiles/hosts/victus/default.nix";
+    flake = "/home/lambdajon/dotfiles/flake.nix";
+    flakearg = "tower";
+  };
   services.power-profiles-daemon.enable = false;
   powerManagement.powertop.enable = false;
 
