@@ -28,3 +28,6 @@ xmonad-build:
 
 switch-victus:
   sudo nixos-rebuild switch --flake .#victus
+
+switch-tower:
+  sudo nixos-rebuild switch --flake .#tower
