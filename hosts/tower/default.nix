@@ -118,9 +118,9 @@ in
         })
       ];
 
-      home.packages = D.rust.core;
-      programs.vscode.extensions = D.rust.vscode.extensions;
-      programs.vscode.userSettings = D.rust.vscode.userSettings;
+      home.packages = D.rust.core ++ D.haskell.core;
+      programs.vscode.extensions = D.rust.vscode.extensions ++ D.haskell.vscode.extensions;
+      programs.vscode.userSettings = D.rust.vscode.userSettings // D.haskell.vscode.userSettings;
       programs.neovim.extraPackages =
         D.rust.neovim.packages
         ++ (with pkgs; [
