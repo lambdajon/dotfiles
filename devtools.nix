@@ -14,7 +14,7 @@
 }:
 
 let
-  hpkgs = pkgs.haskell.packages.ghc910;
+  hpkgs = pkgs.haskell.packages.ghc912;
 in
 {
 
