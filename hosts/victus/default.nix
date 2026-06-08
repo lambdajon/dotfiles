@@ -133,12 +133,13 @@ in
       home = {
         username = personal.username;
         homeDirectory = "/home/${personal.username}";
-        stateVersion = "25.11";
+        stateVersion = "26.05";
       };
       xdg.enable = true;
       # xdg.configFile."xmonad/xmonad.hs".source = ../../modules/nixos/desktop/xmonad/src/xmonad.hs;
       programs.home-manager.enable = true;
     };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
+
 }
