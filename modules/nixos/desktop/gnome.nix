@@ -108,42 +108,41 @@
 
     systemPackages = with pkgs; [
       # GNOME apps
-      gitg
-      lorem
-      emblem
-      commit
-      mousai
-      polari
-      amberol
-      blanket
-      curtail
-      elastic
-      errands
-      dialect
-      komikku
-      decibels
-      citations
-      newsflash
-      collision
-      fragments
-      apostrophe
-      eyedropper
-      impression
-      textpieces
-      letterpress
-      forge-sparks
-      gnome-graphs
+      # gitg
+      # lorem
+      # emblem
+      # commit
+      # mousai
+      # polari
+      # amberol
+      # blanket
+      # `curtail
+      # elastic
+      # errands
+      # dialect
+      # komikku
+      # decibels
+      # citations
+      # newsflash
+      # collision
+      # fragments
+      # apostrophe
+      # eyedropper
+      # impression
+      # textpieces
+      # letterpress
+      # forge-sparks
+      # gnome-graphs
       share-preview
       authenticator
-      gnome-decoder
-      gnome-secrets
-      gnome-obfuscate
-      resources
+      # gnome-decoder
+      # gnome-secrets
+      # gnome-obfuscate
+      # resources
 
       # Developer
       gnome-boxes
       gnome-builder
-      d-spy
       devhelp
       sysprof
 
@@ -165,6 +164,8 @@
       # VPN
       mullvad-vpn
       mullvad
+
+      icon-library
     ];
   };
 }
