@@ -3,13 +3,11 @@
   config = {
     # Bootloader.
     boot = {
-      consoleLogLevel = 0;
-      initrd.verbose = false;
+      consoleLogLevel = 7;
+      initrd.verbose = true;
       kernelParams = [
-        "quiet"
-        "rd.systemd.show_status=false"
-        "rd.udev.log_level=3"
-        "udev.log_priority=3"
+        "systemd.log_level=debug"
+        "rd.systemd.show_status=true"
       ];
       loader = {
         systemd-boot.enable = true;
