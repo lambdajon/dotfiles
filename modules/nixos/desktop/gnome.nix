@@ -139,7 +139,7 @@
       # gnome-secrets
       # gnome-obfuscate
       # resources
-
+      fractal
       # Developer
       gnome-boxes
       gnome-builder
