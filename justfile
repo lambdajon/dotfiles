@@ -36,3 +36,21 @@ switch-tower:
 
 switch-vicub:
   sudo nixos-rebuild switch --flake .#vicub
+
+disk-victus:
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#victus
+
+disk-tower:
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#tower
+
+disk-vicub:
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#vicub
+
+install-victus: disk-victus
+  sudo nixos-install --flake .#victus
+
+install-tower: disk-tower
+  sudo nixos-install --flake .#tower
+
+install-vicub: disk-vicub
+  sudo nixos-install --flake .#vicub

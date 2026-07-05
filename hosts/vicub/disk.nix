@@ -4,6 +4,14 @@
   ],
   ...
 }:
+let
+  commonMountOptions = [
+    "noatime"
+    "compress=zstd:1"
+    "discard=async"
+    "space_cache=v2"
+  ];
+in
 {
   disko.devices = {
     disk = {
@@ -27,19 +35,46 @@
               size = "16G";
               content = {
                 type = "swap";
+                discardPolicy = "pages";
               };
             };
             ROOT = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "@" = {
+                    mountpoint = "/";
+                    mountOptions = commonMountOptions ++ [ "subvol=@" ];
+                  };
+                  "@home" = {
+                    mountpoint = "/home";
+                    mountOptions = commonMountOptions ++ [ "subvol=@home" ];
+                  };
+                  "@nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = commonMountOptions ++ [ "subvol=@nix" "nodev" ];
+                  };
+                  "@log" = {
+                    mountpoint = "/var/log";
+                    mountOptions = commonMountOptions ++ [ "subvol=@log" "nodev" "nosuid" ];
+                  };
+                  "@snapshots" = {
+                    mountpoint = "/.snapshots";
+                    mountOptions = commonMountOptions ++ [ "subvol=@snapshots" "nodev" "nosuid" ];
+                  };
+                };
               };
             };
           };
         };
       };
     };
+  };
+
+  services.fstrim = {
+    enable = true;
+    interval = "weekly";
   };
 }

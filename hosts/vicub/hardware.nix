@@ -22,10 +22,15 @@
     ];
     kernelParams = [
       "nvidia-drm.modeset=1"
+      # zswap: compressed RAM cache in front of NVMe swap
+      "zswap.enabled=1"
+      "zswap.compressor=zstd"
+      "zswap.zpool=zsmalloc"  # denser packing than zbud
+      "zswap.max_pool_percent=25"
     ];
     extraModulePackages = [ ];
     initrd = {
-      kernelModules = [ "nvme" ];
+      kernelModules = [ "nvme" "btrfs" ];
       availableKernelModules = [
         "xhci_pci"
         "thunderbolt"
@@ -35,6 +40,11 @@
       ];
     };
   };
+
+  services.udev.extraRules = ''
+    ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="none"
+  '';
+
   networking.useDHCP = lib.mkDefault true;
 
   hardware = {
@@ -51,6 +61,15 @@
         vpl-gpu-rt
       ];
     };
+  };
+
+  zramSwap.enable = false;
+
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 60;
+    "vm.page-cluster" = 2;
+    "vm.watermark_boost_factor" = 0;
+    "vm.watermark_scale_factor" = 125;
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
