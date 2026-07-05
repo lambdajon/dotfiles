@@ -38,19 +38,22 @@ switch-vicub:
   sudo nixos-rebuild switch --flake .#vicub
 
 disk-victus:
-  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#victus
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount ./hosts/victus/disk.nix
 
 disk-tower:
-  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#tower
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount ./hosts/tower/disk.nix
 
 disk-vicub:
-  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount --flake .#vicub
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount ./hosts/vicub/disk.nix
 
-install-victus: disk-victus
-  sudo nixos-install --flake .#victus
+mount-victus:
+  sudo nix run github:nix-community/disko/latest -- --mode mount ./hosts/victus/disk.nix
 
-install-tower: disk-tower
-  sudo nixos-install --flake .#tower
+mount-tower:
+  sudo nix run github:nix-community/disko/latest -- --mode mount ./hosts/tower/disk.nix
 
-install-vicub: disk-vicub
-  sudo nixos-install --flake .#vicub
+mount-vicub:
+  sudo nix run github:nix-community/disko/latest -- --mode mount ./hosts/vicub/disk.nix
+
+install-vicub:
+  sudo nix run github:nix-community/disko/latest#disko-install -- --flake .#vicub --disk main /dev/nvme0n1
