@@ -12,6 +12,8 @@ eval-victus:
 eval-tower:
   nix eval .#nixosConfigurations.tower.config.system.build.toplevel.drvPath --show-trace
 
+eval-vicub:
+  nix eval .#nixosConfigurations.vicub.config.system.build.toplevel.drvPath --show-trace
 
 check:
   nix flake check
@@ -31,3 +33,6 @@ switch-victus:
 
 switch-tower:
   sudo nixos-rebuild switch --flake .#tower
+
+switch-vicub:
+  sudo nixos-rebuild switch --flake .#vicub
