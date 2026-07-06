@@ -112,6 +112,7 @@ in
         ../../modules/home/tools/direnv.nix
         ../../modules/home/tools/misc.nix
         ../../modules/home/tools/fastfetch.nix
+        ../../modules/home/tools/dev.nix
         (import ../../modules/home/tools/git.nix {
           name = personal.username;
           email = personal.email;
