@@ -22,14 +22,16 @@
     ];
     kernelParams = [
       "nvidia-drm.modeset=1"
+      "intel_pstate=active"
       # zswap: compressed RAM cache in front of NVMe swap
       "zswap.enabled=1"
       "zswap.compressor=zstd"
-      "zswap.zpool=zsmalloc"  # denser packing than zbud
+      "zswap.zpool=zsmalloc"
       "zswap.max_pool_percent=25"
     ];
     extraModulePackages = [ ];
     initrd = {
+      systemd.enable = true;
       kernelModules = [ "nvme" "btrfs" ];
       availableKernelModules = [
         "xhci_pci"
@@ -65,12 +67,35 @@
 
   zramSwap.enable = false;
 
+  services.thermald.enable = true;
+
   boot.kernel.sysctl = {
-    "vm.swappiness" = 60;
-    "vm.page-cluster" = 2;
+    "vm.swappiness" = 10;
+    "vm.page-cluster" = 0;
     "vm.watermark_boost_factor" = 0;
     "vm.watermark_scale_factor" = 125;
+    "net.core.default_qdisc" = "fq";
+    "net.ipv4.tcp_congestion_control" = "bbr";
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nix.settings = {
+    system-features = [
+      "gccarch-x86-64-v3"
+      "gccarch-x86-64-v2"
+      "gccarch-x86-64"
+    ];
+    max-jobs = 4;
+    cores = 4;
+  };
+
+  boot.tmp = {
+    useTmpfs = true;
+    tmpfsSize = "16G";
+  };
+
+  nixpkgs.localSystem = {
+    gcc.arch = "x86-64-v3";
+    gcc.tune = "generic";
+    system = "x86_64-linux";
+  };
 }
