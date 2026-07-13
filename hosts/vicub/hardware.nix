@@ -80,5 +80,10 @@
 
   services.thermald.enable = true;
 
+  nix.settings = {
+    max-jobs = 4;
+    cores = 4;
+  };
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
