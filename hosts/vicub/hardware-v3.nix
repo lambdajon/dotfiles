@@ -31,7 +31,8 @@
     ];
     extraModulePackages = [ ];
     initrd = {
-      kernelModules = [ "nvme" ];
+      systemd.enable = true;
+      kernelModules = [ "nvme" "btrfs" ];
       availableKernelModules = [
         "xhci_pci"
         "thunderbolt"
@@ -40,26 +41,13 @@
         "sd_mod"
       ];
     };
-    tmp = {
-      useTmpfs = true;
-      tmpfsSize = "16G";
-    };
-    kernel.sysctl = {
-      "vm.swappiness" = 10;
-      "vm.page-cluster" = 0;
-      "vm.watermark_boost_factor" = 0;
-      "vm.watermark_scale_factor" = 125;
-      "net.core.default_qdisc" = "fq";
-      "net.ipv4.tcp_congestion_control" = "bbr";
-    };
   };
-
-  networking.useDHCP = lib.mkDefault true;
-
 
   services.udev.extraRules = ''
     ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="none"
   '';
+
+  networking.useDHCP = lib.mkDefault true;
 
   hardware = {
     # Enable any other just in case
@@ -76,9 +64,46 @@
       ];
     };
   };
+
   zramSwap.enable = false;
 
   services.thermald.enable = true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10;
+    "vm.page-cluster" = 0;
+    "vm.watermark_boost_factor" = 0;
+    "vm.watermark_scale_factor" = 125;
+    "net.core.default_qdisc" = "fq";
+    "net.ipv4.tcp_congestion_control" = "bbr";
+  };
+
+  nix.settings = {
+    system-features = [
+      "gccarch-x86-64-v3"
+      "gccarch-x86-64-v2"
+      "gccarch-x86-64"
+    ];
+    max-jobs = 4;
+    cores = 4;
+  };
+
+  boot.tmp = {
+    useTmpfs = true;
+    tmpfsSize = "16G";
+  };
+
+  nixpkgs.localSystem = {
+    gcc.arch = "x86-64-v3";
+    gcc.tune = "generic";
+    system = "x86_64-linux";
+  };
+
+  nixpkgs.overlays = [
+    (_: prev: {
+      llvmPackages_21 = prev.llvmPackages_21 // {
+        llvm = prev.llvmPackages_21.llvm.overrideAttrs (_: { doCheck = false; });
+      };
+    })
+  ];
 }
