@@ -79,11 +79,6 @@
   };
 
   nix.settings = {
-    system-features = [
-      "gccarch-x86-64-v3"
-      "gccarch-x86-64-v2"
-      "gccarch-x86-64"
-    ];
     max-jobs = 4;
     cores = 4;
   };
@@ -94,7 +89,6 @@
   };
 
   nixpkgs.localSystem = {
-    gcc.arch = "x86-64-v3";
     gcc.tune = "generic";
     system = "x86_64-linux";
   };
