@@ -10,13 +10,13 @@
       "pipe-operators"
     ];
     substituters = [
+      "https://cache.xinux.uz/"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
       "https://hackage-server.cachix.org/"
       "https://cache.iog.io"
       "https://cache.garnix.io"
-      "https://cache.xinux.uz/"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
