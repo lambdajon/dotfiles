@@ -94,6 +94,7 @@
       nixosConfigurations = {
         victus = mkNixos "victus" "x86_64-linux";
         tower = mkNixos "tower" "x86_64-linux";
+        vicub = mkNixos "vicub" "x86_64-linux";
       };
 
       formatter = forEachSystem (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);

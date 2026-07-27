@@ -12,6 +12,8 @@ eval-victus:
 eval-tower:
   nix eval .#nixosConfigurations.tower.config.system.build.toplevel.drvPath --show-trace
 
+eval-vicub:
+  nix eval .#nixosConfigurations.vicub.config.system.build.toplevel.drvPath --show-trace
 
 check:
   nix flake check
@@ -31,3 +33,27 @@ switch-victus:
 
 switch-tower:
   sudo nixos-rebuild switch --flake .#tower
+
+switch-vicub:
+  sudo nixos-rebuild switch --flake .#vicub
+
+disk-victus:
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount ./hosts/victus/disk.nix
+
+disk-tower:
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount ./hosts/tower/disk.nix
+
+disk-vicub:
+  sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount ./hosts/vicub/disk.nix
+
+mount-victus:
+  sudo nix run github:nix-community/disko/latest -- --mode mount ./hosts/victus/disk.nix
+
+mount-tower:
+  sudo nix run github:nix-community/disko/latest -- --mode mount ./hosts/tower/disk.nix
+
+mount-vicub:
+  sudo nix run github:nix-community/disko/latest -- --mode mount ./hosts/vicub/disk.nix
+
+install-vicub:
+  sudo nix run github:nix-community/disko/latest#disko-install -- --flake .#vicub --disk main /dev/nvme0n1
