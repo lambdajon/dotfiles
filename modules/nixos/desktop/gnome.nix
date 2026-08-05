@@ -166,6 +166,8 @@
       mullvad
 
       icon-library
+
+      element-desktop
     ];
   };
 }
