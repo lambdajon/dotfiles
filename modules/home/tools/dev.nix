@@ -17,7 +17,7 @@
     rustflags = ["-C", "link-arg=-fuse-ld=mold"]
   '';
 
-  home.file.".cabal/config".text = ''
-    jobs: $ncpusx
-  '';
+  # home.file.".cabal/config".text = ''
+  #   jobs: 16
+  # '';
 }
