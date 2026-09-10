@@ -10,7 +10,7 @@
       "pipe-operators"
     ];
     substituters = [
-      "https://cache.xinux.uz/?priority=10"
+      # "https://cache.xinux.uz/?priority=10"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
@@ -23,7 +23,7 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "hackage-server.cachix.org-1:iw0iRh6+gsFIrxROFaAt5gKNgIHejKjIfyRdbpPYevY="
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-      "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
+      # "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
     ];
     trusted-users = [
       "root"
