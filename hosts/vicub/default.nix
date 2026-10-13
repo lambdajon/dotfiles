@@ -18,6 +18,7 @@ let
     "media"
     "admins"
     "libvirtd"
+    "kvm"
   ];
 in
 {
