@@ -43,6 +43,9 @@ in
 
     inputs.relago.nixosModules.default
     inputs.nix-data.nixosModules.nix-data
+    (import ../../modules/nixos/sops.nix {
+      secretsFile = ../../secrets/vicub.yaml;
+    })
 
   ];
 
@@ -97,6 +100,8 @@ in
 
   # Override module defaults
   security.sudo.wheelNeedsPassword = lib.mkForce false;
+  sops.secrets.github_token = {};
+  sops.secrets.some_password = {};
 
   home-manager.users.${personal.username} =
     { ... }:
@@ -116,6 +121,8 @@ in
           name = personal.username;
           email = personal.email;
         })
+        
+        ./../modules/home/sops.nix  
       ];
 
       home.packages = D.rust.core;
