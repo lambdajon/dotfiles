@@ -44,9 +44,10 @@ in
     inputs.relago.nixosModules.default
     inputs.nix-data.nixosModules.nix-data
 
-    (import ../../modules/nixos/sops.nix {
-      secretsFile = ../../secrets/vicub.yaml;
-    })
+    # TODO: re-enable once secrets/vicub.yaml has ssh_private_key / ssh_public_key
+    # (import ../../modules/nixos/sops.nix {
+    #   secretsFile = ../../secrets/vicub.yaml;
+    # })
   ];
 
   # NVIDIA
@@ -99,19 +100,19 @@ in
     nix-config = "/home/${personal.username}/dotfiles";
   };
 
-  sops.secrets.ssh_private_key = {
-    path = "/home/${personal.username}/.ssh/id_ed25519";
-    owner = personal.username;
-    group = "users";
-    mode = "0600";
-  };
+  # sops.secrets.ssh_private_key = {
+  #   path = "/home/${personal.username}/.ssh/id_ed25519";
+  #   owner = personal.username;
+  #   group = "users";
+  #   mode = "0600";
+  # };
 
-  sops.secrets.ssh_public_key = {
-    path = "/home/${personal.username}/.ssh/id_ed25519.pub";
-    owner = personal.username;
-    group = "users";
-    mode = "0644";
-  };
+  # sops.secrets.ssh_public_key = {
+  #   path = "/home/${personal.username}/.ssh/id_ed25519.pub";
+  #   owner = personal.username;
+  #   group = "users";
+  #   mode = "0644";
+  # };
 
   # Override module defaults
   security.sudo.wheelNeedsPassword = lib.mkForce false;
