@@ -1,5 +1,6 @@
 keys:
   - &vicub age174jyem7js8gfl38tcw4gavg7egs7njhescuvmw0599356vv4jqusr6lx96 
+  - &me age1s2vhw37hzmqf2ckekvwgdggvn4zg47eu3wt5geywa88en96pacrqfk3rca
 
 creation_rules:
   - path_regex: secrets/vicub\.yaml$
