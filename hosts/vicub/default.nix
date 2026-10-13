@@ -40,6 +40,7 @@ in
 
     ../../modules/nixos/services/bluetooth.nix
     ../../modules/nixos/services/docker.nix
+    ../../modules/nixos/services/openqa.nix
 
     inputs.relago.nixosModules.default
     inputs.nix-data.nixosModules.nix-data
