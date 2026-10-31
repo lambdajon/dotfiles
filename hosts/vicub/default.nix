@@ -42,6 +42,7 @@ in
     ../../modules/nixos/services/bluetooth.nix
     ../../modules/nixos/services/docker.nix
     ../../modules/nixos/services/openqa.nix
+    (import ../../modules/nixos/services/wireguard.nix { hostId = 202; })
 
     inputs.relago.nixosModules.default
     inputs.nix-data.nixosModules.nix-data
