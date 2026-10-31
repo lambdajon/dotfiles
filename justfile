@@ -37,6 +37,10 @@ switch-tower:
 switch-vicub:
   sudo nixos-rebuild switch --flake .#vicub
 
+wg-pubkey interface="wg-work":
+  sudo sh -c 'umask 077; mkdir -p /var/lib/wireguard; test -f /var/lib/wireguard/{{interface}}.key || nix run nixpkgs#wireguard-tools -- genkey > /var/lib/wireguard/{{interface}}.key'
+  sudo cat /var/lib/wireguard/{{interface}}.key | nix run nixpkgs#wireguard-tools -- pubkey
+
 disk-victus:
   sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount ./hosts/victus/disk.nix
 
